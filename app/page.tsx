@@ -401,9 +401,9 @@ export default function Home() {
                     Beyond the coding desk, I find creativity in curating{' '}
                     <strong>Spotify playlists</strong>, exploring cinema through my ever-growing{' '}
                     <strong>Letterboxd</strong> watchlist, and staying connected to
-                    <strong> cricket</strong> -whether playing or following the game. These passions
-                    fuel my curiosity, shape my perspective, and often inspire the way I approach
-                    challenges in both code and life.
+                    <strong> cricket</strong> -whether playing or following the game. These
+                    interests broaden my perspective, spark curiosity, and influence how I approach
+                    problem-solving in both code and life.
                   </p>
                   {/* Personal Interest Links - Matching style with professional badges */}
                   <div className="flex flex-wrap gap-4 items-center">
