@@ -355,7 +355,7 @@ export default function Home() {
                   <h3 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
                     Building for the Web, One Line at a Time
                   </h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 md:mb-4">
+                  {/* <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 md:mb-4">
                     I&apos;m a <strong>Front-End Developer</strong> who loves building intuitive,
                     high-performance web applications with <strong>JavaScript</strong> and its
                     ecosystem — React, Next.js, D3.js, and Eleventy. Whether it&apos;s crafting
@@ -367,7 +367,43 @@ export default function Home() {
                     challenges tackled across <strong>LeetCode</strong> and{' '}
                     <strong>InterviewBit Scaler</strong>. I enjoy breaking down complex problems and
                     finding the most effective solutions.
-                  </p>
+                  </p> */}
+
+                  <div className="space-y-6">
+                    <div className="relative pl-6">
+                      <div className="absolute left-0 top-3">
+                        <div
+                          className="w-1.5 h-1.5 bg-gradient-to-r from-primary/70 to-blue-400/70 rounded-full 
+        ring-[0.75px] ring-primary/20 ring-offset-1 ring-offset-background
+        transition-all duration-300 hover:scale-110 hover:ring-primary/30"
+                        />
+                      </div>
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 md:mb-4">
+                        I&apos;m a <strong>Front-End Developer</strong> who loves building
+                        intuitive, high-performance web applications with{' '}
+                        <strong>JavaScript</strong> and its ecosystem — React, Next.js, D3.js, and
+                        Eleventy. Whether it&apos;s crafting seamless user interfaces or data-driven
+                        visualizations, I strive to make every experience both functional and
+                        elegant.
+                      </p>
+                    </div>
+
+                    <div className="relative pl-6">
+                      <div className="absolute left-0 top-3">
+                        <div
+                          className="w-1.5 h-1.5 bg-gradient-to-r from-primary/70 to-blue-400/70 rounded-full 
+        ring-[0.75px] ring-primary/20 ring-offset-1 ring-offset-background
+        transition-all duration-300 hover:scale-110 hover:ring-primary/30"
+                        />
+                      </div>
+                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 md:mb-8">
+                        <strong>Problem-solving</strong> is at the core of my work, with 1000+
+                        challenges tackled across <strong>LeetCode</strong> and{' '}
+                        <strong>InterviewBit Scaler</strong>. I enjoy breaking down complex problems
+                        and finding the most effective solutions.
+                      </p>
+                    </div>
+                  </div>
 
                   {/* Professional Badges */}
                   <div className="flex flex-wrap gap-4 items-center mb-8">
@@ -429,13 +465,13 @@ export default function Home() {
               <CardHeader className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue-500/5 pointer-events-none" />
                 <div className="relative">
-                  <CardTitle className="text-xl flex items-center space-x-3">
+                  <CardTitle className="text-xl flex items-center space-x-4">
                     <div className="relative flex-shrink-0">
-                      <div className="absolute -inset-1.5 bg-gradient-to-r from-primary/40 to-blue-500/40 rounded-full opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500" />
+                      <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-blue-500/30 rounded-full opacity-80 group-hover:opacity-100 blur-[2px] transition-opacity duration-500 " />
                       <div
-                        className="w-2 h-2 bg-gradient-to-r from-primary to-blue-500 rounded-full 
-                ring-2 ring-primary/30 ring-offset-2 ring-offset-background
-                transition-all duration-300 group-hover:scale-125 group-hover:ring-primary/50"
+                        className="w-1 h-1 bg-gradient-to-r from-primary to-blue-500 rounded-full 
+          ring-[1px] ring-primary/20 ring-offset-1 ring-offset-background
+          transition-all duration-300 group-hover:scale-110 group-hover:ring-primary/40"
                       />
                     </div>
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
