@@ -77,7 +77,7 @@ const skillCategories = {
   'Design & UI': {
     icon: <Palette className="w-4 h-4" />,
     color: 'from-[#f97316] to-[#c2410c]', // Refined orange gradient
-    skills: ['Figma', 'Material UI', 'Framer Motion', 'UI/UX Design'],
+    skills: ['Figma', 'Material UI', 'Framer Motion', 'UI/UX Design','Responsive Web Design'],
   },
 };
 
