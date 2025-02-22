@@ -167,6 +167,10 @@ const CollapsiblePoints = ({ points, visiblePoints = 3, isMobile }: CollapsibleP
 
 export default function Home() {
   const [showTooltip, setShowTooltip] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -174,8 +178,18 @@ export default function Home() {
     restDelta: 0.001,
   });
 
-  const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const navSection = document.querySelector('nav');
+      if (!navSection) return;
+
+      const navBottom = navSection.getBoundingClientRect().bottom;
+      setShowScrollButton(navBottom < 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -193,6 +207,11 @@ export default function Home() {
   }, []);
 
   if (!mounted) return null;
+
+  const scrollToNav = () => {
+    const navSection = document.querySelector('nav');
+    navSection?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fafafa] to-[#f5f5f5] dark:from-[#0a0f1f] dark:to-[#101624] text-foreground transition-colors duration-300">
@@ -882,6 +901,26 @@ export default function Home() {
           </div>
         </footer>
       </div>
+      {/* Scroll to Top Button */}
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showScrollButton ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+        onClick={scrollToNav}
+        className={`fixed bottom-6 right-6 p-2 rounded-full bg-primary/10 backdrop-blur-sm 
+    border border-primary/20 text-primary hover:bg-primary/20 
+    transition-all duration-300 z-50 group
+    ${showScrollButton ? 'pointer-events-auto' : 'pointer-events-none'}`}
+      >
+        <ChevronUp className="w-4 h-4" />
+        <span
+          className="absolute right-full mr-2 top-1/2 -translate-y-1/2 px-2 py-1 
+    text-xs bg-primary/10 rounded-md whitespace-nowrap opacity-0 
+    group-hover:opacity-100 transition-opacity duration-200"
+        >
+          Back to Navigation
+        </span>
+      </motion.button>
     </div>
   );
 }
