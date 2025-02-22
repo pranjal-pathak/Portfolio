@@ -22,7 +22,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+        <ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark">
           {children}
         </ThemeProvider>
       </body>
