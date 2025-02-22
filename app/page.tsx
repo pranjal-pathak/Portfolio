@@ -554,8 +554,7 @@ export default function Home() {
                             variant="secondary"
                             className="bg-blue-500/10 text-primary text-sm inline-block"
                           >
-                            Tool purchased by multiple leading global pharma clients with pipeline
-                            expansion
+                            Extensively used by client&apos;s R&D team to identify focus compounds
                           </Badge>
                         </div>
                       </div>
