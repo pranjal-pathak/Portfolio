@@ -698,10 +698,10 @@ export default function Home() {
                 <div className="relative">
                   <div className="flex flex-col md:flex-row justify-between items-start gap-4">
                     <div>
-                      <h3 className="text-sm md:text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
-                        Scaler Academy
+                      <h3 className="text-lg font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
+                        Computer Science
                       </h3>
-                      <p className="text-muted-foreground">Computer Science</p>
+                      <p className="text-sm md:text-base text-muted-foreground">Scaler Academy</p>
                     </div>
                     <div className="md:text-right">
                       <Badge variant="outline" className="mb-2 border-primary/30 text-foreground">
@@ -867,7 +867,7 @@ export default function Home() {
                 { href: '#projects', label: 'Projects' },
                 { href: '#skills', label: 'Skills' },
                 { href: '#education', label: 'Education' },
-                {href:'#interests', label:'Hobbies'},
+                { href: '#interests', label: 'Hobbies' },
                 { href: '#contact', label: 'Contact' },
               ].map(({ href, label }) => (
                 <Link
