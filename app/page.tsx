@@ -4,6 +4,14 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+
+// Add this type definition after the imports
+interface CollapsiblePointsProps {
+  points: string[];
+  visiblePoints?: number;
+  isMobile: boolean;
+}
 import {
   
   Briefcase,
@@ -113,6 +121,55 @@ const projects = [
   },
 ];
 
+const CollapsiblePoints = ({ points, visiblePoints = 3, isMobile }: CollapsiblePointsProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // If not mobile, show all points
+  if (!isMobile) {
+    return (
+      <ul className="list-disc list-inside text-sm text-muted-foreground space-y-2">
+        {points.map((point, index) => (
+          <li key={index}>{point}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  // Mobile view with collapsible behavior
+  const visibleContent = isExpanded ? points : points.slice(0, visiblePoints);
+
+  return (
+    <div className="space-y-2">
+      <ul className="list-disc list-inside text-sm text-muted-foreground space-y-2">
+        {visibleContent.map((point, index) => (
+          <li key={index}>{point}</li>
+        ))}
+      </ul>
+
+      {points.length > visiblePoints && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="flex items-center gap-1 text-sm text-primary hover:text-primary/80 transition-colors mt-2"
+        >
+          {isExpanded ? (
+            <>
+              Show Less <ChevronUp className="w-4 h-4" />
+            </>
+          ) : (
+            <>
+              Show More <ChevronDown className="w-4 h-4" />
+            </>
+          )}
+        </button>
+      )}
+    </div>
+  );
+};
+ 
+
+
+
+
 export default function Home() {
   const [showTooltip, setShowTooltip] = useState(false);
   const { scrollYProgress } = useScroll();
@@ -123,6 +180,19 @@ export default function Home() {
   });
 
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
 
   useEffect(() => {
     setMounted(true);
@@ -163,7 +233,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h1 className="text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
+              <h1 className="text-2xl md:text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
                 {' '}
                 {/* Reduced size and weight */}
                 Pranjal Pathak
@@ -243,8 +313,8 @@ export default function Home() {
               className="hover:bg-primary/10 hover:text-primary transition-colors"
             >
               <Link href={href}>
-                {icon}
-                <span className="ml-2">{label}</span>
+                <span className="w-3 h-3 md:w-4 md:h-4">{icon}</span>
+                <span className="ml-1 md:ml-2 text-xs md:text-sm">{label}</span>
               </Link>
             </Button>
           ))}
@@ -261,7 +331,7 @@ export default function Home() {
           >
             <div className="flex items-center gap-2 mb-8">
               <User className="w-6 h-6 text-primary" />
-              <h2 className="text-2xl font-semibold">About Me</h2>
+              <h2 className="text-xl md:text-2xl font-semibold">About Me</h2>
             </div>
 
             <Card className="bg-card/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden">
@@ -271,7 +341,7 @@ export default function Home() {
                   <h3 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
                     Building for the Web, One Line at a Time
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-8">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 md:mb-8">
                     I&apos;m a <strong>Front-End Developer</strong> who loves building intuitive,
                     high-performance web applications with <strong>JavaScript</strong> and it&apos;s
                     ecosystem — React, Next.js, D3.js, and Eleventy. Whether it&apos;s crafting
@@ -326,7 +396,7 @@ export default function Home() {
                     </Link>
                   </div>
 
-                  <p className="text-muted-foreground leading-relaxed mb-6">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
                     Beyond the coding desk, I find creativity in curating{' '}
                     <strong>Spotify playlists</strong>, exploring cinema through my ever-growing{' '}
                     <strong>Letterboxd</strong> watchlist, and staying connected to
@@ -383,7 +453,7 @@ export default function Home() {
           >
             <div className="flex items-center gap-2 mb-8">
               <Briefcase className="w-6 h-6 text-primary" />
-              <h2 className="text-2xl font-semibold">Experience</h2>
+              <h2 className="text-xl md:text-2xl font-semibold">Experience</h2>
             </div>
 
             <Card className="bg-card/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden">
@@ -408,9 +478,9 @@ export default function Home() {
                   </p>
                 </div>
               </CardHeader>
-              <CardContent className="p-6 space-y-8">
+              <CardContent className="p-4 md:p-6 space-y-8">
                 <div className="space-y-4">
-                  <p className="text-muted-foreground text-md">
+                  <p className="text-sm md:text-base text-muted-foreground text-md">
                     Developed <strong>high-performance front-end applications</strong> for
                     enterprise clients in
                     <strong> BioTech, Pharma & Consumer Goods</strong>, enabling R&D scientists to
@@ -435,96 +505,64 @@ export default function Home() {
                         DISTILL: <strong>AI-Powered Research Assistant</strong> for Single-Cell RNA
                         Sequencing
                       </h5>
-                      <p className="text-muted-foreground mb-4">
+                      <p className="text-sm md:text-base text-muted-foreground mb-4">
                         Created <strong>responsive React front-end app</strong> for analyzing and
                         interpreting complex <strong>single-cell RNA sequencing</strong> data
                       </p>
-                      <ul className="list-disc list-inside text-sm text-muted-foreground mb-4 space-y-2">
-                        <li>
-                          Designed user interface from scratch on <strong>Figma</strong> following
-                          UI/UX design principles
-                        </li>
-                        <li>
-                          Leveraged React libraries:{' '}
-                          <strong>Chakra UI, React Flow, Framer Motion, AG Grid,</strong>
-                          and <strong>React Select</strong> for dynamic user interfaces
-                        </li>
-                        <li>
-                          Created <strong>interactive data visualizations</strong> with{' '}
-                          <strong>D3.js</strong>
-                          (UMAPs, box plots, differential gene expression plots)
-                        </li>
-                        <li>
-                          Developed <strong>custom box and lasso selection</strong> features for
-                          data manipulation
-                        </li>
-                        <li>
-                          Built <strong>mapping dashboard</strong> with <strong>React DnD</strong>{' '}
-                          for study comparison and meta-analysis
-                        </li>
-                        <li>
-                          <strong>Integrated FastAPI</strong> for full CRUD functionality
-                        </li>
-                        <li>
-                          <strong>Configured Dockerfiles and Nginx</strong> for internal server
-                          deployment
-                        </li>
-                      </ul>
-                      <Badge variant="secondary" className="bg-blue-500/10 text-primary">
-                        Tool <strong>purchased by multiple leading global pharma clients</strong>{' '}
-                        with pipeline expansion
-                      </Badge>
+                      <CollapsiblePoints
+                        points={[
+                          'Designed user interface from scratch on Figma following UI/UX design principles',
+                          'Leveraged React libraries: Chakra UI, React Flow, Framer Motion, AG Grid, and React Select for dynamic user interfaces',
+                          'Created interactive data visualizations with D3.js (UMAPs, box plots, differential gene expression plots)',
+                          'Developed custom box and lasso selection features for data manipulation',
+                          'Built mapping dashboard with React DnD for study comparison and meta-analysis',
+                          'Integrated FastAPI for full CRUD functionality',
+                          'Configured Dockerfiles and Nginx for internal server deployment',
+                        ]}
+                        isMobile={isMobile}
+                      />
+                      <div className="mt-4 ">
+                        <Badge
+                          variant="secondary"
+                          className="bg-blue-500/10 text-primary text-sm block"
+                        >
+                          Tool purchased by multiple leading global pharma clients with pipeline
+                          expansion
+                        </Badge>
+                      </div>
                     </div>
 
-                    {/* Odor Informatics Project */}
+                    {/* Odor Informatics Project - Updated to Use CollapsiblePoints */}
                     <div className="bg-muted/30 backdrop-blur-sm rounded-lg p-6 relative overflow-hidden group">
                       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600" />
                       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-t from-blue-400 via-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <h5 className="font-medium text-lg mb-3 text-primary">
                         Odor Informatics: <strong>Chemical Compound Research Tool</strong>
                       </h5>
-                      <p className="text-muted-foreground mb-4">
+                      <p className="text-muted-foreground mb-4 text-sm md:text-base">
                         Built for <strong>$6Bn+ annual revenue FMCG client</strong> to streamline
-                        chemical compound research
+                        chemical compound research.
                       </p>
-                      <ul className="list-disc list-inside text-sm text-muted-foreground mb-4 space-y-2">
-                        <li>
-                          Processed and presented relevant information from{' '}
-                          <strong>12,000+ scientific papers</strong>
-                        </li>
-                        <li>
-                          Implemented features:
-                          <ul className="list-[circle] list-inside ml-6 space-y-1">
-                            <li>
-                              <strong>User authentication</strong> (signup/sign-in)
-                            </li>
-                            <li>
-                              <strong>PDF reader</strong> with annotation capabilities
-                            </li>
-                            <li>
-                              <strong>CSV download</strong> functionality
-                            </li>
-                            <li>
-                              <strong>In-app note-taking</strong> and categorization
-                            </li>
-                            <li>
-                              <strong>Advanced filtering and sorting</strong>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          Utilized <strong>React with AG Grid Library</strong> for high-performance
-                          data handling
-                        </li>
-                        <li>
-                          <strong>Integrated REST APIs</strong> and{' '}
-                          <strong>Docker deployment</strong>
-                        </li>
-                      </ul>
-                      <Badge variant="secondary" className="bg-blue-500/10 text-primary">
-                        <strong>Extensively used</strong> by client&apos;s R&D team to identify focus
-                        compounds
-                      </Badge>
+                      <CollapsiblePoints
+                        points={[
+                          'Processed & analyzed data from 12,000+ scientific papers',
+                          'Implemented user authentication (signup/sign-in)',
+                          'Built PDF reader with annotation capabilities',
+                          'Added CSV download functionality & in-app note-taking',
+                          'Created advanced filtering & sorting with AG Grid',
+                          'Optimized REST API integrations & Docker deployment',
+                        ]}
+                        isMobile={isMobile}
+                      />
+
+                      <div className="mt-4">
+                        <Badge
+                          variant="secondary"
+                          className="bg-blue-500/10 text-primary text-sm block"
+                        >
+                          Extensively used by client&apos;s R&D team to identify focus compounds
+                        </Badge>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -542,7 +580,7 @@ export default function Home() {
           >
             <div className="flex items-center gap-2 mb-8">
               <Layout className="w-6 h-6 text-primary" />
-              <h2 className="text-2xl font-semibold">Projects</h2>
+              <h2 className="text-xl md:text-2xl font-semibold">Projects</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -586,9 +624,11 @@ export default function Home() {
                         )}
                       </div>
                     </div>
-                    <CardContent className="p-4 flex-grow flex flex-col">
-                      <h3 className="font-semibold text-lg mb-2 text-primary">{project.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-4 flex-grow">
+                    <CardContent className="p-4 md:p-6 flex-grow flex flex-col">
+                      <h3 className="font-semibold text-base md:text-lg mb-2 text-primary">
+                        {project.title}
+                      </h3>
+                      <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4 flex-grow">
                         {project.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-auto">
@@ -619,7 +659,7 @@ export default function Home() {
           >
             <div className="flex items-center gap-2 mb-8">
               <Code2 className="w-6 h-6 text-primary" />
-              <h2 className="text-2xl font-semibold">Technical Skills</h2>
+              <h2 className="text-xl md:text-2xl font-semibold">Technical Skills</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -640,7 +680,7 @@ export default function Home() {
                           whileTap={{ scale: 0.95 }}
                         >
                           <Badge
-                            className={`bg-gradient-to-r ${color} text-white hover:opacity-90 transition-opacity`}
+                            className={`text-xs md:text-sm bg-gradient-to-r ${color} text-white hover:opacity-90 transition-opacity`}
                           >
                             {skill}
                           </Badge>
@@ -663,12 +703,12 @@ export default function Home() {
           >
             <div className="flex items-center gap-2 mb-8">
               <GraduationCap className="w-6 h-6 text-primary" />
-              <h2 className="text-2xl font-semibold">Education</h2>
+              <h2 className="text-xl md:text-2xl font-semibold">Education</h2>
             </div>
 
             {/* College Education */}
             <Card className="bg-card/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden">
-              <CardContent className="p-6 relative">
+              <CardContent className="p-4 md:p-6 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue-500/5 pointer-events-none" />
                 <div className="relative">
                   <div className="flex flex-col md:flex-row justify-between items-start gap-4">
@@ -676,7 +716,7 @@ export default function Home() {
                       <h3 className="text-lg font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
                         B.Tech, Civil Engineering
                       </h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-sm md:text-base text-muted-foreground">
                         JSS Academy of Technical Education, Noida
                       </p>
                     </div>
@@ -692,12 +732,12 @@ export default function Home() {
 
             {/* Scaler Academy */}
             <Card className="bg-card/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden">
-              <CardContent className="p-6 relative">
+              <CardContent className="p-4 md:p-6 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue-500/5 pointer-events-none" />
                 <div className="relative">
                   <div className="flex flex-col md:flex-row justify-between items-start gap-4">
                     <div>
-                      <h3 className="text-lg font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
+                      <h3 className="text-sm md:text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
                         Scaler Academy
                       </h3>
                       <p className="text-muted-foreground">Computer Science</p>
@@ -724,14 +764,14 @@ export default function Home() {
           >
             <div className="flex items-center gap-2 mb-8">
               <MessageSquare className="w-6 h-6 text-primary" />
-              <h2 className="text-2xl font-semibold">Get In Touch</h2>
+              <h2 className="text-xl md:text-2xl font-semibold">Get In Touch</h2>
             </div>
 
             <Card className="bg-card/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden">
-              <CardContent className="p-6 relative">
+              <CardContent className="p-4 md:p-6 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue-500/5 pointer-events-none" />
                 <div className="relative">
-                  <p className="text-muted-foreground mb-8">
+                  <p className="text-sm md:text-base text-muted-foreground mb-8">
                     I&apos;m currently open to new opportunities and collaborations. Whether you
                     have a project in mind or just want to connect, I&apos;d love to hear from you!
                   </p>
@@ -790,7 +830,7 @@ export default function Home() {
         {/* Footer */}
         <footer className="mt-24 pt-8 border-t border-border/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs md:text-sm text-muted-foreground">
               © {new Date().getFullYear()} Pranjal Pathak. All rights reserved.
             </p>
             <nav className="flex gap-4">
