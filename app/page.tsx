@@ -86,7 +86,7 @@ const projects = [
   {
     title: 'NimbleEdge Website',
     description:
-      'Developed interactive, responsive website for NimbleEdge, a seed-funded AI startup. Built modular and reusable components including carousels, interactive flow diagrams and feature cards.',
+      'An interactive, responsive website for NimbleEdge, a seed-funded AI startup. Features modular components, carousels, interactive flow diagrams, and feature cards.',
     technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'EmailJS'],
     image: '/1.svg',
     github: 'https://github.com/pranjal-pathak/NimbleEdge-Website',
@@ -95,7 +95,7 @@ const projects = [
   {
     title: 'Biopharma Research Trends Analyzer',
     description:
-      'Developed web app to analyze and visualize trends in biopharma research based on a rich, mock dataset. Implemented data tables with advanced filtering & sorting, and interactive pie, line and bar charts.',
+      'A web app for analyzing biopharma research trends with interactive charts, advanced filtering, and rich data tables.',
     technologies: ['HTML', 'CSS', 'Vanilla JS', 'Chart.JS'],
     image: '/2.svg',
     github: 'https://github.com/pranjal-pathak/Bootcamp_Pranjal_Pathak/tree/main/project',
@@ -104,7 +104,7 @@ const projects = [
   {
     title: 'Keeper',
     description:
-      'A complete solution for bookmarking your practice problems. Easily save, categorize, and revisit coding challenges with tags, filters, and a seamless search feature. Stay organized and track your problem-solving progress effortlessly!',
+      'A bookmarking tool for coding problems, allowing users to save, categorize, and search challenges with ease.',
     technologies: ['HTML', 'CSS', 'Vanilla JS', 'Bootstrap', 'Local Storage'],
     image: '/3.svg',
     github: 'https://github.com/pranjal-pathak/Keeper',
@@ -113,13 +113,14 @@ const projects = [
   {
     title: 'Task-Buddy',
     description:
-      ' A simple to-do list app where you can log tasks, mark them as complete, and stay organized. Features include user authentication, task creation, edit/delete options, and a strike-off mechanism for completed tasks.',
+      'A to-do list app for task management with authentication, edit/delete options, and a strike-off feature for completed tasks.',
     technologies: ['React', 'Tailwind', 'Firestore DB'],
     image: '/4.svg',
     github: 'https://github.com/pranjal-pathak/Task-Buddy',
     live: 'https://taskbuddy-510.web.app/',
   },
 ];
+
 
 const CollapsiblePoints = ({ points, visiblePoints = 3, isMobile }: CollapsiblePointsProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -628,7 +629,7 @@ export default function Home() {
                       <h3 className="font-semibold text-base md:text-lg mb-2 text-primary">
                         {project.title}
                       </h3>
-                      <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4 flex-grow">
+                      <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 flex-grow">
                         {project.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-auto">
