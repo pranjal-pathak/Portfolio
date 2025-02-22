@@ -202,7 +202,7 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fafafa] to-[#f5f5f5] dark:from-background dark:to-background/95 text-foreground transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-[#fafafa] to-[#f5f5f5] dark:from-[#0a0f1f] dark:to-[#101624] text-foreground transition-colors duration-300">
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 z-50"
         style={{ scaleX }}
@@ -522,10 +522,10 @@ export default function Home() {
                         ]}
                         isMobile={isMobile}
                       />
-                      <div className="mt-4 ">
+                      <div className="mt-4">
                         <Badge
                           variant="secondary"
-                          className="bg-blue-500/10 text-primary text-sm block"
+                          className="bg-blue-500/10 text-primary text-sm inline-block"
                         >
                           Tool purchased by multiple leading global pharma clients with pipeline
                           expansion
@@ -557,12 +557,15 @@ export default function Home() {
                       />
 
                       <div className="mt-4">
-                        <Badge
-                          variant="secondary"
-                          className="bg-blue-500/10 text-primary text-sm block"
-                        >
-                          Extensively used by client&apos;s R&D team to identify focus compounds
-                        </Badge>
+                        <div className="mt-4">
+                          <Badge
+                            variant="secondary"
+                            className="bg-blue-500/10 text-primary text-sm inline-block"
+                          >
+                            Tool purchased by multiple leading global pharma clients with pipeline
+                            expansion
+                          </Badge>
+                        </div>
                       </div>
                     </div>
                   </div>
