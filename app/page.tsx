@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, Palmtree } from 'lucide-react';
 
 // Add this type definition after the imports
 interface CollapsiblePointsProps {
@@ -297,6 +297,7 @@ export default function Home() {
             { href: '#projects', icon: <Briefcase className="w-4 h-4" />, label: 'Projects' },
             { href: '#skills', icon: <Code2 className="w-4 h-4" />, label: 'Skills' },
             { href: '#education', icon: <GraduationCap className="w-4 h-4" />, label: 'Education' },
+            { href: '#interests', icon: <Palmtree className="w-4 h-4" />, label: 'Hobbies' },
             { href: '#contact', icon: <Contact className="w-4 h-4" />, label: 'Contact' },
           ].map(({ href, icon, label }) => (
             <Button
@@ -866,6 +867,7 @@ export default function Home() {
                 { href: '#projects', label: 'Projects' },
                 { href: '#skills', label: 'Skills' },
                 { href: '#education', label: 'Education' },
+                {href:'#interests', label:'Hobbies'},
                 { href: '#contact', label: 'Contact' },
               ].map(({ href, label }) => (
                 <Link
