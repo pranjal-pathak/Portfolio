@@ -30,6 +30,7 @@ import {
   ServerIcon,
   Wrench,
   Palette,
+  TreePalm ,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -334,22 +335,26 @@ export default function Home() {
                   <h3 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
                     Building for the Web, One Line at a Time
                   </h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 md:mb-8">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 md:mb-4">
                     I&apos;m a <strong>Front-End Developer</strong> who loves building intuitive,
-                    high-performance web applications with <strong>JavaScript</strong> and it&apos;s
+                    high-performance web applications with <strong>JavaScript</strong> and its
                     ecosystem — React, Next.js, D3.js, and Eleventy. Whether it&apos;s crafting
                     seamless user interfaces or data-driven visualizations, I strive to make every
-                    experience both functional and elegant. <strong>Problem-solving</strong> is at
-                    the core of my work, with 1000+ challenges tackled across{' '}
-                    <strong>LeetCode</strong> and <strong>InterviewBit Scaler</strong>. I enjoy
-                    breaking down complex problems and finding the most effective solutions.
+                    experience both functional and elegant.
                   </p>
-                  {/* Professional Badges - Consistent styling */}
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 md:mb-8">
+                    <strong> Problem-solving</strong> is at the core of my work, with 1000+
+                    challenges tackled across <strong>LeetCode</strong> and{' '}
+                    <strong>InterviewBit Scaler</strong>. I enjoy breaking down complex problems and
+                    finding the most effective solutions.
+                  </p>
+
+                  {/* Professional Badges */}
                   <div className="flex flex-wrap gap-4 items-center mb-8">
                     {/* Experience Badge */}
                     <Link href={'#experience'}>
                       <div className="px-4 py-2 border rounded-md bg-muted/30 flex items-center gap-2">
-                        <Briefcase className="w-5 h-5 text-gray-500 " />
+                        <Briefcase className="w-5 h-5 text-gray-500" />
                         <span>1+ Years Experience</span>
                       </div>
                     </Link>
@@ -378,57 +383,8 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="px-4 py-2 border rounded-md hover:bg-muted/50 transition-colors flex items-center gap-2"
                     >
-                      <Image
-                        src="/scaler.svg"
-                        alt="Scaler Logo"
-                        width={20} // Set appropriate width
-                        height={20} // Set appropriate height
-                        priority // Optional for better performance
-                      />
+                      <Image src="/scaler.svg" alt="Scaler Logo" width={20} height={20} priority />
                       Scaler Profile
-                    </Link>
-                  </div>
-
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
-                    Beyond the coding desk, I find creativity in curating{' '}
-                    <strong>Spotify playlists</strong>, exploring cinema through my ever-growing{' '}
-                    <strong>Letterboxd</strong> watchlist, and staying connected to
-                    <strong> cricket</strong> -whether playing or following the game. These
-                    interests broaden my perspective, spark curiosity, and influence how I approach
-                    problem-solving in both code and life.
-                  </p>
-                  {/* Personal Interest Links - Matching style with professional badges */}
-                  <div className="flex flex-wrap gap-4 items-center">
-                    <Link
-                      href="https://open.spotify.com/user/o7qxsehhvtnws316i5xuiowkt"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 border rounded-md hover:bg-muted/50 transition-colors flex items-center gap-2"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="w-5 h-5 text-[#1DB954]"
-                        fill="currentColor"
-                      >
-                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
-                      </svg>
-                      Spotify
-                    </Link>
-
-                    <Link
-                      href="https://letterboxd.com/PranjalPathak/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 border rounded-md hover:bg-muted/50 transition-colors flex items-center gap-2"
-                    >
-                      <Image
-                        src="/letterboxd.png"
-                        alt="Letterboxd"
-                        width={20}
-                        height={20}
-                        unoptimized
-                      />
-                      Letterboxd
                     </Link>
                   </div>
                 </div>
@@ -757,7 +713,73 @@ export default function Home() {
             </Card>
           </motion.section>
 
-          {/* Contact Section */}
+          {/*Interest */}
+          <motion.section
+            id="interests"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            <div className="flex items-center gap-2 mb-8">
+              <TreePalm className="w-6 h-6 text-primary" />
+              <h2 className="text-xl md:text-2xl font-semibold">Hobbies & Interests</h2>
+            </div>
+
+            <Card className="bg-card/80 backdrop-blur-sm border-border/50 shadow-lg overflow-hidden">
+              <CardContent className="p-6 relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue-500/5 pointer-events-none" />
+                <div className="relative">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">
+                    Beyond the coding desk, I find creativity in curating{' '}
+                    <strong>Spotify playlists</strong>, exploring cinema through my ever-growing{' '}
+                    <strong>Letterboxd</strong> watchlist, and staying connected to{' '}
+                    <strong>cricket</strong> — whether playing or following the game. These
+                    interests broaden my perspective, spark curiosity, and influence how I approach
+                    problem-solving in both code and life.
+                  </p>
+
+                  {/* Personal Interest Links */}
+                  <div className="flex flex-wrap gap-4 items-center">
+                    {/* Spotify */}
+                    <Link
+                      href="https://open.spotify.com/user/o7qxsehhvtnws316i5xuiowkt"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 border rounded-md hover:bg-muted/50 transition-colors flex items-center gap-2"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="w-5 h-5 text-[#1DB954]"
+                        fill="currentColor"
+                      >
+                        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                      </svg>
+                      Spotify
+                    </Link>
+
+                    {/* Letterboxd */}
+                    <Link
+                      href="https://letterboxd.com/PranjalPathak/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 border rounded-md hover:bg-muted/50 transition-colors flex items-center gap-2"
+                    >
+                      <Image
+                        src="/letterboxd.png"
+                        alt="Letterboxd"
+                        width={20}
+                        height={20}
+                        unoptimized
+                      />
+                      Letterboxd
+                    </Link>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.section>
+
           {/* Contact Section */}
           <motion.section
             id="contact"
