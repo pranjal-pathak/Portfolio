@@ -465,11 +465,11 @@ export default function Home() {
               <CardHeader className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-blue-500/5 pointer-events-none" />
                 <div className="relative">
-                  <CardTitle className="text-xl flex items-center space-x-4">
+                  <CardTitle className="text-xl flex items-center space-x-5">
                     <div className="relative flex-shrink-0">
                       <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-blue-500/30 rounded-full opacity-80 group-hover:opacity-100 blur-[2px] transition-opacity duration-500 " />
                       <div
-                        className="w-1 h-1 bg-gradient-to-r from-primary to-blue-500 rounded-full 
+                        className="w-2 h-2 bg-gradient-to-r from-primary to-blue-500 rounded-full 
           ring-[1px] ring-primary/20 ring-offset-1 ring-offset-background
           transition-all duration-300 group-hover:scale-110 group-hover:ring-primary/40"
                       />
@@ -478,7 +478,7 @@ export default function Home() {
                       Front-end Engineer at Aganitha Cognitive Solutions
                     </span>
                   </CardTitle>
-                  <p className="text-sm text-muted-foreground ml-5 mt-1">
+                  <p className="text-sm text-muted-foreground ml-7 mt-1">
                     October 2023 - Present • Hyderabad, India
                   </p>
                 </div>
