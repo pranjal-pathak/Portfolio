@@ -20,7 +20,7 @@ This is my **personal portfolio website**, built using **Next.js**, **ShadCN UI*
 
 ### **1️⃣ Clone the repository**
 ```sh
-git clone https://github.com/your-username/portfolio.git
+git clone https://github.com/pranjal-pathak/Portfolio
 cd portfolio
 ```
 
@@ -40,16 +40,6 @@ yarn dev
 
 The site should be running on **http://localhost:3000**.
 
-## 🎨 Customization
-
-- Update your profile information in `data/profile.js`.
-- Modify styles in `styles/globals.css` and `components/`.
-- Add your projects in the `data/projects.js` file.
-
-## 📸 Screenshots
-
-![Portfolio Preview](https://your-image-link.com)
-
 ## 🌟 Future Improvements
 
 - Add a blog section using MDX.
@@ -62,5 +52,5 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
-**🔗 Live Demo:** [Portfolio Website](https://your-portfolio-link.com)  
-**📂 Repository:** [GitHub](https://github.com/your-username/portfolio)
+**🔗 Live Demo:** [Portfolio Website](https://pranjal-pathak.vercel.app/)  
+**📂 Repository:** [GitHub](https://github.com/pranjal-pathak/Portfolio)
