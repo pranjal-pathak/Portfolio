@@ -587,20 +587,29 @@ export default function Home() {
                 >
                   <Card className="bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden group h-full flex flex-col rounded-lg">
                     <div className="relative w-full h-48">
-                      <Image
-                        src={project.image || '/placeholder.svg'}
-                        alt={project.title}
-                        fill
-                        className="object-cover rounded-t-lg transition-transform duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      {/* Wrap image in Link */}
+                      <Link
+                        href={project.live || '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-0"
+                      >
+                        <Image
+                          src={project.image || '/placeholder.svg'}
+                          alt={project.title}
+                          fill
+                          className="object-cover rounded-t-lg transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </Link>
+
                       <div className="absolute top-2 right-2 flex space-x-2">
                         {project.github && (
                           <Link
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-background/80 hover:bg-primary/80 p-2 rounded-full transition-colors"
+                            className="bg-background/80 hover:bg-primary/80 p-2 rounded-full transition-colors z-10 hover:text-gray-900 dark:hover:text-primary-foreground"
                           >
                             <Github className="w-4 h-4" />
                             <span className="sr-only">View Source Code</span>
@@ -611,7 +620,7 @@ export default function Home() {
                             href={project.live}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-background/80 hover:bg-primary/80 p-2 rounded-full transition-colors"
+                            className="bg-background/80 hover:bg-primary/80 p-2 rounded-full transition-colors z-10 hover:text-gray-900 dark:hover:text-primary-foreground"
                           >
                             <ExternalLink className="w-4 h-4" />
                             <span className="sr-only">View Live Project</span>
