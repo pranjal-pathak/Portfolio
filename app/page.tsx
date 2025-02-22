@@ -829,11 +829,11 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="mt-24 pt-8 border-t border-border/50">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
             <p className="text-xs md:text-sm text-muted-foreground">
               © {new Date().getFullYear()} Pranjal Pathak. All rights reserved.
             </p>
-            <nav className="flex gap-4">
+            <nav className="hidden md:flex gap-4">
               {[
                 { href: '#about', label: 'About' },
                 { href: '#experience', label: 'Experience' },
