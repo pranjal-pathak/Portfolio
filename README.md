@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Personal Developer Portfolio
 
-## Getting Started
+This is my **personal portfolio website**, built using **Next.js**, **ShadCN UI**, and **Framer Motion** to showcase my projects, experience, and skills with a clean, modern design and smooth animations.
 
-First, run the development server:
+## ✨ Features
 
-```bash
+- 📌 **Projects Showcase** – Display work with live previews and GitHub links.
+- 🎨 **Minimal & Responsive UI** – Built with **ShadCN UI** for a clean and accessible design.
+- 🖥 **Dark Mode Support** – Adaptive theme for light & dark mode.
+- 🎬 **Smooth Animations** – Enhanced user experience with **Framer Motion**.
+- ⚡ **Fast & SEO Optimized** – Uses Next.js for **server-side rendering** and improved performance.
+
+## 🛠 Tech Stack
+
+- **Frontend:** Next.js, TypeScript, ShadCN UI, Tailwind CSS
+- **Animations:** Framer Motion
+- **Deployment:** Vercel
+
+## 🚀 Getting Started
+
+### **1️⃣ Clone the repository**
+```sh
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+```
+
+### **2️⃣ Install dependencies**
+```sh
+npm install
+# or
+yarn install
+```
+
+### **3️⃣ Run the development server**
+```sh
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site should be running on **http://localhost:3000**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎨 Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Update your profile information in `data/profile.js`.
+- Modify styles in `styles/globals.css` and `components/`.
+- Add your projects in the `data/projects.js` file.
 
-## Learn More
+## 📸 Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+![Portfolio Preview](https://your-image-link.com)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌟 Future Improvements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Add a blog section using MDX.
+- Integrate contact forms with an API.
+- More interactive elements with 3D animations.
 
-## Deploy on Vercel
+## 📜 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is open-source and available under the [MIT License](LICENSE).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+**🔗 Live Demo:** [Portfolio Website](https://your-portfolio-link.com)  
+**📂 Repository:** [GitHub](https://github.com/your-username/portfolio)
