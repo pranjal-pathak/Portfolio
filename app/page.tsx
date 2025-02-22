@@ -80,7 +80,7 @@ const projects = [
     description:
       'Developed interactive, responsive website for NimbleEdge, a seed-funded AI startup. Built modular and reusable components including carousels, interactive flow diagrams and feature cards.',
     technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'EmailJS'],
-    image: '/1.jpeg',
+    image: '/1.svg',
     github: 'https://github.com/pranjal-pathak/NimbleEdge-Website',
     live: 'https://nimble-edge.vercel.app/',
   },
@@ -89,7 +89,7 @@ const projects = [
     description:
       'Developed web app to analyze and visualize trends in biopharma research based on a rich, mock dataset. Implemented data tables with advanced filtering & sorting, and interactive pie, line and bar charts.',
     technologies: ['HTML', 'CSS', 'Vanilla JS', 'Chart.JS'],
-    image: '/2.png',
+    image: '/2.svg',
     github: 'https://github.com/pranjal-pathak/Bootcamp_Pranjal_Pathak/tree/main/project',
     live: 'https://nexus365.netlify.app/',
   },
@@ -98,7 +98,7 @@ const projects = [
     description:
       'A complete solution for bookmarking your practice problems. Easily save, categorize, and revisit coding challenges with tags, filters, and a seamless search feature. Stay organized and track your problem-solving progress effortlessly!',
     technologies: ['HTML', 'CSS', 'Vanilla JS', 'Bootstrap', 'Local Storage'],
-    image: '/3.jpg',
+    image: '/3.svg',
     github: 'https://github.com/pranjal-pathak/Keeper',
     live: 'https://keeper-1.netlify.app/#',
   },
@@ -107,7 +107,7 @@ const projects = [
     description:
       ' A simple to-do list app where you can log tasks, mark them as complete, and stay organized. Features include user authentication, task creation, edit/delete options, and a strike-off mechanism for completed tasks.',
     technologies: ['React', 'Tailwind', 'Firestore DB'],
-    image: '/4.jpg',
+    image: '/4.svg',
     github: 'https://github.com/pranjal-pathak/Task-Buddy',
     live: 'https://taskbuddy-510.web.app/',
   },
