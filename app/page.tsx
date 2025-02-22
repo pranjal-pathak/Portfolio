@@ -21,6 +21,7 @@ import {
   Github,
   GraduationCap,
   Layout,
+  FolderKanban,
   Linkedin,
   Mail,
   MessageSquare,
@@ -30,7 +31,8 @@ import {
   ServerIcon,
   Wrench,
   Palette,
-  TreePalm ,
+  TreePalm,
+  
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -531,7 +533,7 @@ export default function Home() {
             className="space-y-6"
           >
             <div className="flex items-center gap-2 mb-8">
-              <Layout className="w-6 h-6 text-primary" />
+              <FolderKanban className="w-6 h-6 text-primary" />
               <h2 className="text-xl md:text-2xl font-semibold">Projects</h2>
             </div>
 
