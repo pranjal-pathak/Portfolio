@@ -13,7 +13,6 @@ interface CollapsiblePointsProps {
   isMobile: boolean;
 }
 import {
-  
   Briefcase,
   Code2,
   Contact,
@@ -26,7 +25,6 @@ import {
   Mail,
   MessageSquare,
   Phone,
-  
   User,
   Blocks,
   ServerIcon,
@@ -121,7 +119,6 @@ const projects = [
   },
 ];
 
-
 const CollapsiblePoints = ({ points, visiblePoints = 3, isMobile }: CollapsiblePointsProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -166,10 +163,6 @@ const CollapsiblePoints = ({ points, visiblePoints = 3, isMobile }: CollapsibleP
     </div>
   );
 };
- 
-
-
-
 
 export default function Home() {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -193,7 +186,6 @@ export default function Home() {
 
     return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
-
 
   useEffect(() => {
     setMounted(true);
@@ -296,7 +288,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-wrap gap-2 mb-12"
+          className="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 mb-12"
         >
           {[
             { href: '#about', icon: <User className="w-4 h-4" />, label: 'About' },
