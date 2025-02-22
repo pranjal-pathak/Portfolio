@@ -20,7 +20,6 @@ import {
   ExternalLink,
   Github,
   GraduationCap,
-  Layout,
   FolderKanban,
   Linkedin,
   Mail,
@@ -32,7 +31,6 @@ import {
   Wrench,
   Palette,
   TreePalm,
-  
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -79,7 +77,7 @@ const skillCategories = {
   'Design & UI': {
     icon: <Palette className="w-4 h-4" />,
     color: 'from-[#f97316] to-[#c2410c]', // Refined orange gradient
-    skills: ['Figma', 'Material UI', 'Framer Motion', 'UI/UX Design','Responsive Web Design'],
+    skills: ['Figma', 'Material UI', 'Framer Motion', 'UI/UX Design', 'Responsive Web Design'],
   },
 };
 
