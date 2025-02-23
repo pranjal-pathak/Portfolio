@@ -649,45 +649,44 @@ export default function Home() {
                     </div>
                     <CardContent className="p-4 md:p-6 flex-grow flex flex-col">
                       {/* Title with WIP Icon */}
-                      <div className="flex items-center justi space-x-2 mb-2">
+                      <div className="flex items-center justify-between w-full mb-2">
+                        {/* Title on the left */}
                         <h3 className="font-semibold text-base md:text-lg text-primary">
                           {project.title}
                         </h3>
 
                         {/* Work in Progress Icon on the right */}
                         {!project.completed && (
-                          <div className="relative overflow-visible">
-                            <HoverCard>
-                              <HoverCardTrigger asChild>
-                                <div className="bg-background/80 hover:bg-primary/80 p-2 rounded-full transition-colors z-10 hover:text-gray-900 dark:hover:text-primary-foreground cursor-help">
-                                  <Image
-                                    src="/wip.png"
-                                    width={16}
-                                    height={16}
-                                    alt="Work in Progress"
-                                    className="w-10 h-10"
-                                  />
+                          <HoverCard openDelay={0} closeDelay={0}>
+                            <HoverCardTrigger asChild>
+                              <button className="flex items-center focus:outline-none">
+                                <Image
+                                  src="/wip.png"
+                                  width={32}
+                                  height={32}
+                                  alt="Work in Progress"
+                                  className="w-10 h-10 md:w-10 md:h-10"
+                                />
+                              </button>
+                            </HoverCardTrigger>
+
+                            <HoverCardContent
+                              className="w-[200px] md:w-[220px] max-w-sm p-4 bg-background shadow-lg rounded-lg"
+                              side="left" // Shift to left instead of right
+                              align="start" // Align properly
+                              sideOffset={12} // Moves slightly left
+                            >
+                              <div className="flex items-start space-x-3">
+                                
+                                <div className="space-y-1">
+                                  <h4 className="text-sm md:text-base font-semibold">Work in Progress</h4>
+                                  <p className="text-sm md:text-base text-muted-foreground">
+                                    {project.remaining}
+                                  </p>
                                 </div>
-                              </HoverCardTrigger>
-                              <HoverCardContent className="min-w-[220px] max-w-sm p-4 bg-background shadow-lg rounded-lg">
-                                <div className="flex items-start space-x-3 flex-wrap">
-                                  <Image
-                                    src="/wip.png"
-                                    width={16}
-                                    height={16}
-                                    alt="Work in Progress"
-                                    className="w-10 h-10"
-                                  />
-                                  <div className="space-y-1">
-                                    <h4 className="text-sm font-semibold">Work in Progress</h4>
-                                    <p className="text-sm text-muted-foreground whitespace-normal">
-                                      {project.remaining}
-                                    </p>
-                                  </div>
-                                </div>
-                              </HoverCardContent>
-                            </HoverCard>
-                          </div>
+                              </div>
+                            </HoverCardContent>
+                          </HoverCard>
                         )}
                       </div>
 
