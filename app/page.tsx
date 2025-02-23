@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring, } from 'framer-motion';
 import { ChevronDown, ChevronUp, Palmtree } from 'lucide-react';
 
 // Add this type definition after the imports
@@ -37,6 +37,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import ThemeToggle from '../components/ui/theme-toggle';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 
 // Update the skillCategories with more appropriate icons
 const skillCategories = {
@@ -90,6 +91,9 @@ const projects = [
     image: '/1.svg',
     github: 'https://github.com/pranjal-pathak/NimbleEdge-Website',
     live: 'https://nimble-edge.vercel.app/',
+    completed: false,
+    remaining:
+      'Mobile responsive design implementation in progress. Optimizing components for smaller screens.',
   },
   {
     title: 'Biopharma Research Trends Analyzer',
@@ -99,6 +103,7 @@ const projects = [
     image: '/2.svg',
     github: 'https://github.com/pranjal-pathak/Bootcamp_Pranjal_Pathak/tree/main/project',
     live: 'https://nexus365.netlify.app/',
+    completed: true,
   },
   {
     title: 'Keeper',
@@ -108,6 +113,7 @@ const projects = [
     image: '/3.svg',
     github: 'https://github.com/pranjal-pathak/Keeper',
     live: 'https://keeper-1.netlify.app/#',
+    completed: true,
   },
   {
     title: 'Task-Buddy',
@@ -117,6 +123,7 @@ const projects = [
     image: '/4.svg',
     github: 'https://github.com/pranjal-pathak/Task-Buddy',
     live: 'https://taskbuddy-510.web.app/',
+    completed: true,
   },
 ];
 
@@ -641,12 +648,55 @@ export default function Home() {
                       </div>
                     </div>
                     <CardContent className="p-4 md:p-6 flex-grow flex flex-col">
-                      <h3 className="font-semibold text-base md:text-lg mb-2 text-primary">
-                        {project.title}
-                      </h3>
+                      {/* Title with WIP Icon */}
+                      <div className="flex items-center justi space-x-2 mb-2">
+                        <h3 className="font-semibold text-base md:text-lg text-primary">
+                          {project.title}
+                        </h3>
+
+                        {/* Work in Progress Icon on the right */}
+                        {!project.completed && (
+                          <div className="relative overflow-visible">
+                            <HoverCard>
+                              <HoverCardTrigger asChild>
+                                <div className="bg-background/80 hover:bg-primary/80 p-2 rounded-full transition-colors z-10 hover:text-gray-900 dark:hover:text-primary-foreground cursor-help">
+                                  <Image
+                                    src="/wip.png"
+                                    width={16}
+                                    height={16}
+                                    alt="Work in Progress"
+                                    className="w-10 h-10"
+                                  />
+                                </div>
+                              </HoverCardTrigger>
+                              <HoverCardContent className="min-w-[220px] max-w-sm p-4 bg-background shadow-lg rounded-lg">
+                                <div className="flex items-start space-x-3 flex-wrap">
+                                  <Image
+                                    src="/wip.png"
+                                    width={16}
+                                    height={16}
+                                    alt="Work in Progress"
+                                    className="w-10 h-10"
+                                  />
+                                  <div className="space-y-1">
+                                    <h4 className="text-sm font-semibold">Work in Progress</h4>
+                                    <p className="text-sm text-muted-foreground whitespace-normal">
+                                      {project.remaining}
+                                    </p>
+                                  </div>
+                                </div>
+                              </HoverCardContent>
+                            </HoverCard>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Project Description */}
                       <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 flex-grow">
                         {project.description}
                       </p>
+
+                      {/* Tech Stack Badges */}
                       <div className="flex flex-wrap gap-2 mt-auto">
                         {project.technologies.map((tech, i) => (
                           <Badge
