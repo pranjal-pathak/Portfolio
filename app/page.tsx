@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useScroll, useSpring, } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { ChevronDown, ChevronUp, Palmtree } from 'lucide-react';
 
 // Add this type definition after the imports
@@ -177,6 +177,7 @@ export default function Home() {
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -657,11 +658,14 @@ export default function Home() {
 
                         {/* Work in Progress Icon on the right */}
                         {!project.completed && (
-                          <HoverCard openDelay={0} closeDelay={0}>
+                          <HoverCard open={open} onOpenChange={setOpen}>
                             <HoverCardTrigger asChild>
-                              <button className="flex items-center focus:outline-none">
+                              <button
+                                className="flex items-center focus:outline-none"
+                                onClick={() => setOpen((prev) => !prev)} // Toggle on click for mobile
+                              >
                                 <Image
-                                  src="/wip.png"
+                                  src="/wip1.png"
                                   width={32}
                                   height={32}
                                   alt="Work in Progress"
@@ -669,17 +673,17 @@ export default function Home() {
                                 />
                               </button>
                             </HoverCardTrigger>
-
                             <HoverCardContent
                               className="w-[200px] md:w-[220px] max-w-sm p-4 bg-background shadow-lg rounded-lg"
-                              side="left" // Shift to left instead of right
-                              align="start" // Align properly
-                              sideOffset={12} // Moves slightly left
+                              side="left"
+                              align="start"
+                              sideOffset={12}
                             >
                               <div className="flex items-start space-x-3">
-                                
                                 <div className="space-y-1">
-                                  <h4 className="text-sm md:text-base font-semibold">Work in Progress</h4>
+                                  <h4 className="text-sm md:text-base font-semibold">
+                                    Work in Progress
+                                  </h4>
                                   <p className="text-sm md:text-base text-muted-foreground">
                                     {project.remaining}
                                   </p>
