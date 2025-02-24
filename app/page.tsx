@@ -605,9 +605,8 @@ export default function Home() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <Card className="bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden group h-full flex flex-col rounded-lg">
-                    <div className="relative w-full h-48">
-                      {/* Wrap image in Link */}
+                  <Card className="group h-full flex flex-col rounded-lg">
+                    <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
                       <Link
                         href={project.live || '#'}
                         target="_blank"
@@ -618,7 +617,7 @@ export default function Home() {
                           src={project.image || '/placeholder.svg'}
                           alt={project.title}
                           fill
-                          className="object-cover rounded-t-lg transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </Link>
@@ -648,58 +647,57 @@ export default function Home() {
                         )}
                       </div>
                     </div>
+
                     <CardContent className="p-4 md:p-6 flex-grow flex flex-col">
-                      {/* Title with WIP Icon */}
                       <div className="flex items-center justify-between w-full mb-2">
-                        {/* Title on the left */}
                         <h3 className="font-semibold text-base md:text-lg text-primary">
                           {project.title}
                         </h3>
 
-                        {/* Work in Progress Icon on the right */}
                         {!project.completed && (
-                          <HoverCard open={open} onOpenChange={setOpen}>
-                            <HoverCardTrigger asChild>
-                              <button
-                                className="flex items-center focus:outline-none"
-                                onClick={() => setOpen((prev) => !prev)} // Toggle on click for mobile
+                          <div className="relative z-50">
+                            <HoverCard open={open} onOpenChange={setOpen}>
+                              <HoverCardTrigger asChild>
+                                <button
+                                  className="flex items-center focus:outline-none"
+                                  onClick={() => setOpen((prev) => !prev)}
+                                >
+                                  <Image
+                                    src="/wip1.png"
+                                    width={32}
+                                    height={32}
+                                    alt="Work in Progress"
+                                    className="w-10 h-10 md:w-10 md:h-10"
+                                  />
+                                </button>
+                              </HoverCardTrigger>
+                              <HoverCardContent
+                                className="w-[200px] md:w-[220px] max-w-sm p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-xl rounded-lg border"
+                                side="left"
+                                align="start"
+                                sideOffset={12}
+                                avoidCollisions={true}
                               >
-                                <Image
-                                  src="/wip1.png"
-                                  width={32}
-                                  height={32}
-                                  alt="Work in Progress"
-                                  className="w-10 h-10 md:w-10 md:h-10"
-                                />
-                              </button>
-                            </HoverCardTrigger>
-                            <HoverCardContent
-                              className="w-[200px] md:w-[220px] max-w-sm p-4 bg-background shadow-lg rounded-lg"
-                              side="left"
-                              align="start"
-                              sideOffset={12}
-                            >
-                              <div className="flex items-start space-x-3">
-                                <div className="space-y-1">
-                                  <h4 className="text-sm md:text-base font-semibold">
-                                    Work in Progress
-                                  </h4>
-                                  <p className="text-sm md:text-base text-muted-foreground">
-                                    {project.remaining}
-                                  </p>
+                                <div className="flex items-start space-x-3">
+                                  <div className="space-y-1">
+                                    <h4 className="text-sm md:text-base font-semibold">
+                                      Work in Progress
+                                    </h4>
+                                    <p className="text-sm md:text-base text-muted-foreground">
+                                      {project.remaining}
+                                    </p>
+                                  </div>
                                 </div>
-                              </div>
-                            </HoverCardContent>
-                          </HoverCard>
+                              </HoverCardContent>
+                            </HoverCard>
+                          </div>
                         )}
                       </div>
 
-                      {/* Project Description */}
                       <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 flex-grow">
                         {project.description}
                       </p>
 
-                      {/* Tech Stack Badges */}
                       <div className="flex flex-wrap gap-2 mt-auto">
                         {project.technologies.map((tech, i) => (
                           <Badge
