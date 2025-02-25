@@ -31,6 +31,7 @@ import {
   Wrench,
   Palette,
   TreePalm,
+  Clock
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -655,38 +656,30 @@ export default function Home() {
                         </h3>
 
                         {!project.completed && (
-                          <div className="relative z-50">
+                          <div className="relative">
                             <HoverCard open={open} onOpenChange={setOpen}>
                               <HoverCardTrigger asChild>
                                 <button
-                                  className="flex items-center focus:outline-none"
+                                  className="group/wip flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-yellow-500/10 dark:text-yellow-500 dark:hover:bg-yellow-500/20 transition-colors"
                                   onClick={() => setOpen((prev) => !prev)}
                                 >
-                                  <Image
-                                    src="/wip1.png"
-                                    width={32}
-                                    height={32}
-                                    alt="Work in Progress"
-                                    className="w-10 h-10 md:w-10 md:h-10"
-                                  />
+                                  <Clock className="w-3.5 h-3.5" />
+                                  <span>In Progress</span>
                                 </button>
                               </HoverCardTrigger>
                               <HoverCardContent
-                                className="w-[200px] md:w-[220px] max-w-sm p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-xl rounded-lg border"
+                                className="w-[220px] p-3 bg-card border-border shadow-lg dark:bg-background/95 dark:backdrop-blur dark:supports-[backdrop-filter]:bg-background/60"
                                 side="left"
-                                align="start"
-                                sideOffset={12}
-                                avoidCollisions={true}
+                                align="end"
+                                sideOffset={4}
                               >
-                                <div className="flex items-start space-x-3">
-                                  <div className="space-y-1">
-                                    <h4 className="text-sm md:text-base font-semibold">
-                                      Work in Progress
-                                    </h4>
-                                    <p className="text-sm md:text-base text-muted-foreground">
-                                      {project.remaining}
-                                    </p>
-                                  </div>
+                                <div className="space-y-1.5">
+                                  <p className="text-sm font-medium text-foreground">
+                                    Work in Progress
+                                  </p>
+                                  <p className="text-xs text-muted-foreground/90">
+                                    {project.remaining}
+                                  </p>
                                 </div>
                               </HoverCardContent>
                             </HoverCard>
