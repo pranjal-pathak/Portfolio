@@ -267,7 +267,7 @@ export default function Home() {
           <div className="flex items-center gap-4 flex-wrap">
             <div className="flex items-center space-x-3">
               <Button variant="ghost" size="icon" asChild className="hover:text-primary">
-                <Link href="mailto:pranjalpathak510@gmail.com">
+                <Link href="mailto:pranjalpathak.fedev@gmail.com">
                   <Mail className="w-5 h-5" />
                   <span className="sr-only">Email</span>
                 </Link>
@@ -904,13 +904,13 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Email */}
                     <Link
-                      href="mailto:pranjalpathak510@gmail.com"
+                      href="mailto:pranjalpathak.fedev@gmail.com"
                       className="flex flex-col items-center p-6 bg-muted/30 rounded-lg border border-primary/10 hover:border-primary/30 hover:bg-primary/10 transition-all group"
                     >
                       <Mail className="h-6 w-6 mb-3 text-primary group-hover:scale-110 transition-transform" />
                       <span className="text-foreground mb-1">Email</span>
                       <span className="text-sm text-muted-foreground">
-                        pranjalpathak510@gmail.com
+                        pranjalpathak.fedev@gmail.com
                       </span>
                     </Link>
 
